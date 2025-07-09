@@ -117,6 +117,7 @@
                             <th>No</th>
                             <th class="sortable" data-sort="no_agenda">No. Agenda <i class="fas fa-sort"></i></th>
                             <th class="sortable" data-sort="no_surat">No. Surat <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="klasifikasi_surat">Klasifikasi Surat <i class="fas fa-sort"></i></th>
                             <th class="sortable" data-sort="pengirim">Pengirim <i class="fas fa-sort"></i></th>
                             <th class="sortable" data-sort="asal_surat">Asal Surat <i class="fas fa-sort"></i></th>
                             <th class="sortable" data-sort="tgl_surat">Tanggal Surat <i class="fas fa-sort"></i></th>
@@ -131,6 +132,7 @@
                             <td>{{ ($suratMasuk->currentPage() - 1) * $suratMasuk->perPage() + $index + 1 }}</td>
                             <td>{{ $surat->no_agenda }}</td>
                             <td>{{ $surat->no_surat }}</td>
+                            <td>{{ $surat->klasifikasi_surat }}</td> <!-- Tambahkan ini -->
                             <td>{{ $surat->pengirim }}</td>
                             <td>{{ $surat->asal_surat }}</td>
                             <td>{{ date('d-m-Y', strtotime($surat->tgl_surat)) }}</td>
