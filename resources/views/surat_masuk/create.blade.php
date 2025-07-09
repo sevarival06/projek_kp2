@@ -63,6 +63,7 @@
                                     <div class="form-text small"><i class="fas fa-info-circle fa-xs"></i> Hanya angka, maksimal 50 karakter</div>
                                 </div>
                             </div>
+
                             
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -78,6 +79,29 @@
                                     <div class="form-text small"><i class="fas fa-info-circle fa-xs"></i> Maksimal 50 karakter</div>
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="klasifikasi_surat" class="form-label mb-1">
+                                        <i class="fas fa-tag text-primary me-1"></i>Klasifikasi Surat<span class="text-danger">*</span>
+                                    </label>
+                                    <select name="klasifikasi_surat" id="klasifikasi_surat" 
+                                            class="form-control @error('klasifikasi_surat') is-invalid @enderror" required>
+                                        <option value="">-- Pilih Klasifikasi --</option>
+                                        <option value="Surat Umum" {{ old('klasifikasi_surat', $surat->klasifikasi_surat ?? '') == 'Surat Umum' ? 'selected' : '' }}>Surat Umum</option>
+                                        <option value="Surat Dinas" {{ old('klasifikasi_surat', $surat->klasifikasi_surat ?? '') == 'Surat Dinas' ? 'selected' : '' }}>Surat Dinas</option>
+                                        <option value="Surat Niaga" {{ old('klasifikasi_surat', $surat->klasifikasi_surat ?? '') == 'Surat Niaga' ? 'selected' : '' }}>Surat Niaga</option>
+                                        <option value="Surat Pribadi" {{ old('klasifikasi_surat', $surat->klasifikasi_surat ?? '') == 'Surat Pribadi' ? 'selected' : '' }}>Surat Pribadi</option>
+                                        <option value="Surat Keputusan (SK)" {{ old('klasifikasi_surat', $surat->klasifikasi_surat ?? '') == 'Surat Keputusan (SK)' ? 'selected' : '' }}>Surat Keputusan (SK)</option>
+                                        <option value="Surat Resmi Lainnya" {{ old('klasifikasi_surat', $surat->klasifikasi_surat ?? '') == 'Surat Resmi Lainnya' ? 'selected' : '' }}>Surat Resmi Lainnya</option>
+                                    </select>
+                                    @error('klasifikasi_surat')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-text small"><i class="fas fa-info-circle fa-xs"></i> Wajib pilih klasifikasi</div>
+                                </div>
+                            </div>
+
                             
                             <!-- Pengirim & Asal Surat - Row 2 -->
                             <div class="col-md-6">
