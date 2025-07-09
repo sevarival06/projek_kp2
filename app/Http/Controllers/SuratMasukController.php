@@ -87,6 +87,7 @@ class SuratMasukController extends Controller
         $validated = $request->validate([
             'no_agenda' => 'required|string|max:50|regex:/^[0-9]+$/',
             'no_surat' => 'required|string|max:50',
+            'klasifikasi_surat' => 'required|in:Surat Umum,Surat Dinas,Surat Niaga,Surat Pribadi,Surat Keputusan (SK),Surat Resmi Lainnya',
             'pengirim' => 'required|string|max:250',
             'asal_surat' => 'required|string|max:500',
             'penerima' => 'required|string|max:250',
@@ -131,6 +132,7 @@ class SuratMasukController extends Controller
         $suratMasuk = new SuratMasuk();
         $suratMasuk->no_agenda = $validated['no_agenda'];
         $suratMasuk->no_surat = $validated['no_surat'];
+        $suratMasuk->klasifikasi_surat = $request->klasifikasi_surat;
         $suratMasuk->pengirim = $validated['pengirim'];
         $suratMasuk->asal_surat = $validated['asal_surat'];
         $suratMasuk->penerima = $validated['penerima'];
@@ -213,6 +215,7 @@ class SuratMasukController extends Controller
         $validated = $request->validate([
             'no_agenda' => 'required|string|max:50|regex:/^[0-9]+$/',
             'no_surat' => 'required|string|max:50',
+            'klasifikasi_surat' => 'required|in:Surat Umum,Surat Dinas,Surat Niaga,Surat Pribadi,Surat Keputusan (SK),Surat Resmi Lainnya',
             'pengirim' => 'required|string|max:250',
             'asal_surat' => 'required|string|max:500',
             'penerima' => 'required|string|max:250',
@@ -265,6 +268,7 @@ class SuratMasukController extends Controller
 
         $suratMasuk->no_agenda = $validated['no_agenda'];
         $suratMasuk->no_surat = $validated['no_surat'];
+        $suratMasuk->klasifikasi_surat = $request->klasifikasi_surat;
         $suratMasuk->pengirim = $validated['pengirim'];
         $suratMasuk->asal_surat = $validated['asal_surat'];
         $suratMasuk->penerima = $validated['penerima'];
@@ -350,6 +354,7 @@ class SuratMasukController extends Controller
             $query->where(function ($q) use ($searchTerm) {
                 $q->where('no_agenda', 'like', '%' . $searchTerm . '%')
                   ->orWhere('no_surat', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('klasifikasi_surat', 'like', '%' . $searchTerm . '%')
                   ->orWhere('pengirim', 'like', '%' . $searchTerm . '%')
                   ->orWhere('asal_surat', 'like', '%' . $searchTerm . '%')
                   ->orWhere('penerima', 'like', '%' . $searchTerm . '%')
