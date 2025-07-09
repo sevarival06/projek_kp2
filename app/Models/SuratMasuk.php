@@ -38,6 +38,7 @@ class SuratMasuk extends Model
     protected $fillable = [
         'no_agenda',
         'no_surat',
+        'klasifikasi_surat', // Klasifikasi surat ditambahkan
         'pengirim',
         'asal_surat',
         'penerima',
